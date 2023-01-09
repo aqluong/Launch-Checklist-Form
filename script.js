@@ -16,13 +16,13 @@
 
 // TODO 1 : set up a window load handler
 window.addEventListener("load", function(){
-   // TODO 2: set upa submit handler for the form
+   // TODO 2: set up a submit handler for the form
    form.addEventListener("submit", function(event){
       event.preventDefault()
-      let pilotNameNode = document.querySelector("input[name=pilotName]");
-      let copilotNameNode = document.querySelector("input[name=copilotName]");
-      let fuelLevelNode = document.querySelector("input[name=fuelLevel]");
-      let cargoMassNode = document.querySelector("input[name=cargoMass]");
+      let pilotName = document.querySelector("input[name=pilotName]");
+      let copilotName = document.querySelector("input[name=copilotName]");
+      let fuelLevel = document.querySelector("input[name=fuelLevel]");
+      let cargoMass = document.querySelector("input[name=cargoMass]");
    
       // TODO 3: cancel submission using event.preventDefault()
 
