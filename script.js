@@ -17,13 +17,25 @@
 // TODO 1 : set up a window load handler
 window.addEventListener("load", function(){
 
-})
+
    // TODO 2: set upa submit handler for the form
-
+   const form = document.querySelector("form");
+   form.addEventListener("submit", (event)=>{
+   
       // TODO 3: cancel submission using event.preventDefault()
-
+      event.preventDefault();
       // TODO 4: Validate that all inputs have data
-
+      function validateInput(testInput) {
+         if (testInput === ""){
+             return 'Empty';
+         }
+             else if (isNaN(Number(testInput))){
+                 return 'Not a Number';
+             }
+             else{
+                 return 'Is a Number';
+             };
+     };
       // TODO 5: Check fuel level and cargo mass, and report launch status
 
       // TODO 6: make the list visible
@@ -35,3 +47,6 @@ window.addEventListener("load", function(){
       // TODO 8: randomly choose one of the planets
 
       // TODO 9: display info about the chosen planets
+   })
+
+})
