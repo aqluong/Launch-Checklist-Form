@@ -16,26 +16,18 @@
 
 // TODO 1 : set up a window load handler
 window.addEventListener("load", function(){
-
-
    // TODO 2: set upa submit handler for the form
-   const form = document.querySelector("form");
-   form.addEventListener("submit", (event)=>{
+   form.addEventListener("submit", function(event){
+      event.preventDefault()
+      let pilotNameNode = document.querySelector("input[name=pilotName]");
+      let copilotNameNode = document.querySelector("input[name=copilotName]");
+      let fuelLevelNode = document.querySelector("input[name=fuelLevel]");
+      let cargoMassNode = document.querySelector("input[name=cargoMass]");
    
       // TODO 3: cancel submission using event.preventDefault()
-      event.preventDefault();
+
       // TODO 4: Validate that all inputs have data
-      function validateInput(testInput) {
-         if (testInput === ""){
-             return 'Empty';
-         }
-             else if (isNaN(Number(testInput))){
-                 return 'Not a Number';
-             }
-             else{
-                 return 'Is a Number';
-             };
-     };
+
       // TODO 5: Check fuel level and cargo mass, and report launch status
 
       // TODO 6: make the list visible
@@ -49,4 +41,3 @@ window.addEventListener("load", function(){
       // TODO 9: display info about the chosen planets
    })
 
-})
