@@ -16,7 +16,6 @@
 
 // TODO 1 : set up a window load handler
 window.addEventListener("load", function(){
-// Bonus able to randomly choose a planet's data here using the old code but now trying to add Refresh Destination button"
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
          response.json().then(function(json){
             let missionTarget = document.getElementById('missionTarget');
@@ -33,10 +32,10 @@ window.addEventListener("load", function(){
             `;
          });
       });
+
       // TODO 2: set up a submit handler for the form
    let form = document.querySelector('form');
    form.addEventListener("submit", function(event){
-      
       // TODO 3: cancel submission using event.preventDefault()
       event.preventDefault()
 
@@ -45,10 +44,10 @@ window.addEventListener("load", function(){
       let fuelLevel = document.querySelector("input[name=fuelLevel]");
       let cargoMass = document.querySelector("input[name=cargoMass]");
    
-      form.addEventListener("")
+      
 
       // TODO 4: Validate that all inputs have data
-      if (!pilotName.value || !copilotName.value || !fuelLevel.value || !cargoMass.value) {
+      if (!fuelLevel.value || !cargoMass.value || !pilotName.value || !copilotName.value) {
          alert("😡 FILL OUT ALL FIELDS 👿")
       } 
          else if (!isNaN(pilotName.value) || !isNaN(copilotName.value)){
