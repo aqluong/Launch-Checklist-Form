@@ -82,7 +82,7 @@ window.addEventListener("load", function(){
                launchStatus.style.color = 'red';
             }
             // Need to check 10,000 for fuelLevel and cargoMass levels as well because they are VALID
-            else if (fuelLevel.value >= 10000 && cargoMass.value <= 10000){
+            else if (fuelLevel.value >= 10000 && cargoMass.value < 10000){
                document.getElementById("fuelStatus").innerHTML = `Fuel level good for Launch! 🔋`;
                document.getElementById("cargoStatus").innerHTML = `Cargo mass good for Launch 💯`;
                document.getElementById("launchStatus").innerHTML = `🚀💥🚀💥🚀 Shuttle ready for Launch!!! 🚀💥🚀💥🚀`
