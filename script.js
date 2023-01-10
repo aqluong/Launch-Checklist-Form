@@ -48,7 +48,7 @@ window.addEventListener("load", function(){
 
       // TODO 4: Validate that all inputs have data
       if (!fuelLevel.value || !cargoMass.value || !pilotName.value || !copilotName.value) {
-         alert("😡 FILL OUT ALL FIELDS 👿")
+         alert("😡 FILL OUT ALL OF THE FIELDS 👿")
       } 
          else if (!isNaN(pilotName.value) || !isNaN(copilotName.value)){
          alert("Pilot and/or Copilot name should NOT include #s. ReEnter!!!");
@@ -57,7 +57,7 @@ window.addEventListener("load", function(){
          alert("Fuel Level and/or Cargo Mass should NOT include letters. ReEnter!!!");
       } 
             else {
-         itemStatus.style.visibility = 'visible'; // TODO6
+         itemStatus.style.visibility = 'visible'; // TODO 6: make the list visible
          document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName.value} is ready.`;
          document.getElementById("copilotStatus").innerHTML = `Copilot ${copilotName.value} is ready.`;
          launchStatus.style.color = 'red';
@@ -87,7 +87,7 @@ window.addEventListener("load", function(){
                document.getElementById("launchStatus").innerHTML = `🚀💥🚀💥🚀 Shuttle ready for Launch!!! 🚀💥🚀💥🚀`
                launchStatus.style.color = 'green';
             }
-      // TODO 6: make the list visible
+      
          }
       
 
