@@ -14,7 +14,7 @@
 
 
 
-// TODO 1 : set up a window load handler
+// TODO 1, 7, 8, 9: set up a window load handler
 window.addEventListener("load", function(){
    fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
          response.json().then(function(json){
@@ -63,25 +63,26 @@ window.addEventListener("load", function(){
          launchStatus.style.color = 'red';
 
       // TODO 5: Check fuel level and cargo mass, and report launch status
-         if (fuelLevel.value < 10000 && cargoMass.value > 10000){
+         if (fuelLevel.value < 10000 && cargoMass.value >= 10000){
             document.getElementById("fuelStatus").innerHTML = `Not enough fuel for journey 🔻🪫`;
             document.getElementById("cargoStatus").innerHTML = `Too much mass. Please lighten Cargo`;
             document.getElementById("launchStatus").innerHTML = `🚫 Shuttle not ready for launch 🚫`;
             launchStatus.style.color = 'red';
          }
-            else if (fuelLevel.value > 10000 && cargoMass.value > 10000){
+            else if (fuelLevel.value >= 10000 && cargoMass.value >= 10000){
                document.getElementById("fuelStatus").innerHTML = `Fuel level good for Launch! 🔋`;
                document.getElementById("cargoStatus").innerHTML = `Too much mass 🏋️. Please lighten Cargo 🦅`;
                document.getElementById("launchStatus").innerHTML = `🛑 ✋ Shuttle not ready for launch 🙅‍♀️🛑`
                launchStatus.style.color = 'red';
             }
-            else if (fuelLevel.value < 10000 && cargoMass.value < 10000){
+            else if (fuelLevel.value < 10000 && cargoMass.value <= 10000){
                document.getElementById("cargoStatus").innerHTML = `Cargo mass is good for Launch 😺`
                document.getElementById("launchStatus").innerHTML = `🚫 Shuttle not ready for launch 🚫`;
                document.getElementById("fuelStatus").innerHTML = `Not enough fuel for the Journey!🔻🪫`;
                launchStatus.style.color = 'red';
             }
-            else if (fuelLevel.value > 10000 && cargoMass.value < 10000){
+            // Need to check 10,000 for fuelLevel and cargoMass levels as well because they are VALID
+            else if (fuelLevel.value >= 10000 && cargoMass.value <= 10000){
                document.getElementById("fuelStatus").innerHTML = `Fuel level good for Launch! 🔋`;
                document.getElementById("cargoStatus").innerHTML = `Cargo mass good for Launch 💯`;
                document.getElementById("launchStatus").innerHTML = `🚀💥🚀💥🚀 Shuttle ready for Launch!!! 🚀💥🚀💥🚀`
@@ -92,7 +93,7 @@ window.addEventListener("load", function(){
       
 
 
-   // TODO 7: Fetch planet data
+        // TODO 7: Fetch planet data
 
       // TODO 8: randomly choose one of the planets
 
