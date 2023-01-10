@@ -16,22 +16,81 @@
 
 // TODO 1 : set up a window load handler
 window.addEventListener("load", function(){
-   // TODO 2: set up a submit handler for the form
+// Bonus able to randomly choose a planet's data here using the old code but now trying to add Refresh Destination button"
+   fetch("https://handlers.education.launchcode.org/static/planets.json").then(function(response) {
+         response.json().then(function(json){
+            let missionTarget = document.getElementById('missionTarget');
+            let index = Math.floor(Math.random() * json.length);
+            missionTarget.innerHTML = `
+            <ol>
+            <li>Name: ${json[index].name}</li>
+            <li>Diameter: ${json[index].diameter}</li>
+            <li>Star: ${json[index].star}</li>
+            <li>Distance from Earth: ${json[index].distance}</li>
+            <li>Number of Moons: ${json[index].moons}</li>
+            </ol>
+            <img src="${json[index].image}">
+            `;
+         });
+      });
+      // TODO 2: set up a submit handler for the form
+   let form = document.querySelector('form');
    form.addEventListener("submit", function(event){
+      
+      // TODO 3: cancel submission using event.preventDefault()
       event.preventDefault()
+
       let pilotName = document.querySelector("input[name=pilotName]");
       let copilotName = document.querySelector("input[name=copilotName]");
       let fuelLevel = document.querySelector("input[name=fuelLevel]");
       let cargoMass = document.querySelector("input[name=cargoMass]");
    
-      // TODO 3: cancel submission using event.preventDefault()
+      form.addEventListener("")
 
       // TODO 4: Validate that all inputs have data
+      if (!pilotName.value || !copilotName.value || !fuelLevel.value || !cargoMass.value) {
+         alert("😡 FILL OUT ALL FIELDS 👿")
+      } 
+         else if (!isNaN(pilotName.value) || !isNaN(copilotName.value)){
+         alert("Pilot and/or Copilot name should NOT include #s. ReEnter!!!");
+      } 
+         else if (isNaN(fuelLevel.value) || isNaN(cargoMass.value)){
+         alert("Fuel Level and/or Cargo Mass should NOT include letters. ReEnter!!!");
+      } 
+            else {
+         itemStatus.style.visibility = 'visible'; // TODO6
+         document.getElementById("pilotStatus").innerHTML = `Pilot ${pilotName.value} is ready.`;
+         document.getElementById("copilotStatus").innerHTML = `Copilot ${copilotName.value} is ready.`;
+         launchStatus.style.color = 'red';
 
       // TODO 5: Check fuel level and cargo mass, and report launch status
-
+         if (fuelLevel.value < 10000 && cargoMass.value > 10000){
+            document.getElementById("fuelStatus").innerHTML = `Not enough fuel for journey 🔻🪫`;
+            document.getElementById("cargoStatus").innerHTML = `Too much mass. Please lighten Cargo`;
+            document.getElementById("launchStatus").innerHTML = `🚫 Shuttle not ready for launch 🚫`;
+            launchStatus.style.color = 'red';
+         }
+            else if (fuelLevel.value > 10000 && cargoMass.value > 10000){
+               document.getElementById("fuelStatus").innerHTML = `Fuel level good for Launch! 🔋`;
+               document.getElementById("cargoStatus").innerHTML = `Too much mass 🏋️. Please lighten Cargo 🦅`;
+               document.getElementById("launchStatus").innerHTML = `🛑 ✋ Shuttle not ready for launch 🙅‍♀️🛑`
+               launchStatus.style.color = 'red';
+            }
+            else if (fuelLevel.value < 10000 && cargoMass.value < 10000){
+               document.getElementById("cargoStatus").innerHTML = `Cargo mass is good for Launch 😺`
+               document.getElementById("launchStatus").innerHTML = `🚫 Shuttle not ready for launch 🚫`;
+               document.getElementById("fuelStatus").innerHTML = `Not enough fuel for the Journey!🔻🪫`;
+               launchStatus.style.color = 'red';
+            }
+            else if (fuelLevel.value > 10000 && cargoMass.value < 10000){
+               document.getElementById("fuelStatus").innerHTML = `Fuel level good for Launch! 🔋`;
+               document.getElementById("cargoStatus").innerHTML = `Cargo mass good for Launch 💯`;
+               document.getElementById("launchStatus").innerHTML = `🚀💥🚀💥🚀 Shuttle ready for Launch!!! 🚀💥🚀💥🚀`
+               launchStatus.style.color = 'green';
+            }
       // TODO 6: make the list visible
-
+         }
+      
 
 
    // TODO 7: Fetch planet data
@@ -40,4 +99,4 @@ window.addEventListener("load", function(){
 
       // TODO 9: display info about the chosen planets
    })
-
+})
